@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+ 	function alink(a){
+		bno = a.getAttribute("no");
+		const url = "jikwon?buser_no=" + bno;
+		fetch(url).then(res => {
+			if(res.status === 200){
+				return res.json();
+			} else{
+				console.log("error");
+			}
+		})
+		.then(jsonData => {
+			process1(jsonData);
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	} 
+	
+	function process1(jsonData){
+		let ss = "<table border='1'>";
+		ss += "<tr><th>사번</th><th>이름</th><th>직급</th></tr>";
+		for (let i=0; i<jsonData.length; i++){
+			ss += "<tr>";
+			ss += "<td>" + jsonData[i].no + "</td>";
+			ss += "<td>" + jsonData[i].name + "</td>";
+			ss += "<td>" + jsonData[i].jik + "</td>";
+			ss += "</tr>";
+		}
+		ss += "</table>";
+		document.querySelector("#result").innerHTML = ss;
+	}
+</script>
+</head>
+<body>
+<h1>** 직원 목록 **</h1>
+부서명을 클릭하시면 근무 직원 목록이 보입니다.
+<table border="1">
+	<tr>
+		<th>부서번호</th>
+		<th>부서명</th>
+		<th>부서전화</th>
+	</tr>
+	{% if blist %}
+		{% for i in blist %}
+			<tr>
+				<td>{{i.buser_no}}</td>
+				<td><a href="javascript: void(0)" onclick="alink(this)" no="{{i.buser_no}}">{{i.buser_name}}</a></td>
+				<td>{{i.buser_tel}}</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+		<tr>
+			<td colspan="3">해당 데이터가 존재하지 않습니다.</td>
+		</tr>
+	{% endif %}
+</table>
+<hr>
+<h1>** 근무 직원 **</h1>
+<div id="result"></div>
+</body>
+</html>
