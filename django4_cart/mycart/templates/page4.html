@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+/* 	window.onload = function(){
+		document.getElementById("btnOk").onclick = function(){
+			frm.submit();
+		}
+	} */
+
+	$(function(){
+		$("#btnOK").click(function(){
+			$("#frm").submit();
+		});
+	});
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td><img src="/static/images/img4.jpg" style="width:100%"></td>
+		<td>
+			<pre>
+				<b>한일디아이 짱구는못말려 에어팟 1세대 / 2세대 케이스</b>
+				13,400원 
+					
+				 
+				 최대 670원 적립
+				무료배송 (로켓배송 상품 19,800원 이상 구매 시)  다른 판매자 보기(11)
+				 내일(수) 10/13 도착 보장 (5시간 51분 내 주문 시 / 서울⋅경기 기준)
+				 내일(수) 10/13 새벽 7시 전 도착 보장 
+				 캐시적립 혜택 상세보기 | 최대 670원 적립
+				쿠페이 머니 결제 시 1% 적립
+				
+				[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립
+				
+				[로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립
+				
+				무선이어폰 기종: Airpods 1/2
+				케이스 재질: 젤리/실리콘
+				유무선 여부: 무선
+				쿠팡상품번호: 5672105643 - 9343114195
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="mycart" id="frm" method="post">{% csrf_token %}
+				<input type="hidden" name="name" value="케이스">
+				<input type="hidden" name="price" value="13400">
+				<input type="button" id="btnOK" value="장바구니 담기">
+			</form>
+			<input type="button" value="상품 목록 보기" onclick="history.back()">
+		</td>
+	</tr>
+</table>
+</body>
+</html>

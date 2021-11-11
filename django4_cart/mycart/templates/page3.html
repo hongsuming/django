@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+/* 	window.onload = function(){
+		document.getElementById("btnOk").onclick = function(){
+			frm.submit();
+		}
+	} */
+
+	$(function(){
+		$("#btnOK").click(function(){
+			$("#frm").submit();
+		});
+	});
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td><img src="/static/images/img3.jpg" style="width:100%"></td>
+		<td>
+			<pre>
+				<b>짱구 다용도 접이식 베드테이블</b>
+				16,020원 
+					
+				 
+				최대 801원 적립
+				내일(수) 10/13 도착 보장 (5시간 52분  내 주문 시 / 서울⋅경기 기준)
+				다른 판매자 보기(3)
+				 
+				로켓배송 상품 19,800원 이상 무료배송
+				 
+				무료배송 + 무료반품
+				로켓와우 신청시
+				 캐시적립 혜택 상세보기 | 최대 801원 적립
+				쿠페이 머니 결제 시 1% 적립
+				
+				[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립
+				
+				[로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립
+				
+				쿠팡상품번호: 1775990931 - 3024133597
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="mycart" id="frm" method="post">{% csrf_token %}
+				<input type="hidden" name="name" value="책상">
+				<input type="hidden" name="price" value="16020">
+				<input type="button" id="btnOK" value="장바구니 담기">
+			</form>
+			<input type="button" value="상품 목록 보기" onclick="history.back()">
+		</td>
+	</tr>
+</table>
+</body>
+</html>

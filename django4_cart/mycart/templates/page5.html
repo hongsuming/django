@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+/* 	window.onload = function(){
+		document.getElementById("btnOk").onclick = function(){
+			frm.submit();
+		}
+	} */
+
+	$(function(){
+		$("#btnOK").click(function(){
+			$("#frm").submit();
+		});
+	});
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td><img src="/static/images/img5.jpg" style="width:100%"></td>
+		<td>
+			<pre>
+				<b>BT21 짱구 텀블러(300ml)</b>
+				10,900원 
+				 
+				최대 545원 적립
+				품절임박 (4개 남음)
+				배송비 2,500원 
+				모레(목) 10/14 도착 예정
+				판매자: (주)지에스리테일 홈쇼핑
+				택배사: CJ 대한통운
+				 다른 판매자 보기(6)
+				 캐시적립 혜택 상세보기 | 최대 545원 적립
+				쿠페이 머니 결제 시 1% 적립
+				
+				[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립
+				
+				[로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립
+				
+				쿠팡상품번호: 303819828 - 955853682
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="mycart" id="frm" method="post">{% csrf_token %}
+				<input type="hidden" name="name" value="텀블러">
+				<input type="hidden" name="price" value="10900">
+				<input type="button" id="btnOK" value="장바구니 담기">
+			</form>
+			<input type="button" value="상품 목록 보기" onclick="history.back()">
+		</td>
+	</tr>
+</table>
+</body>
+</html>

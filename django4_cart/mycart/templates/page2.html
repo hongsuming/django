@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+/* 	window.onload = function(){
+		document.getElementById("btnOk").onclick = function(){
+			frm.submit();
+		}
+	} */
+
+	$(function(){
+		$("#btnOK").click(function(){
+			$("#frm").submit();
+		});
+	});
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td><img src="/static/images/img2.png" style="width:100%"></td>
+		<td>
+			<pre>
+				<b>짱구는 못말려 도자기 밥그릇 식기세트</b>
+				14,680원 
+				 
+				 최대 734원 적립
+				무료배송  반품비 30,000원 더 알아보기 
+				10/21 도착 예정
+				판매자: Shengcai (Weihai City) International Trading Co., Ltd.
+				택배사: CJ 대한통운
+				 다른 판매자 보기(7)
+				 캐시적립 혜택 상세보기 | 최대 734원 적립
+				쿠페이 머니 결제 시 1% 적립
+				
+				[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립
+				
+				[로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립
+				
+				재질: 도자기
+				전자레인지사용여부: 전자레인지사용가능
+				사용계절: 겨울용
+				색상계열: 그레이계열
+				쿠팡상품번호: 5925933049 - 10516058231
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="mycart" id="frm" method="post">{% csrf_token %}
+				<input type="hidden" name="name" value="식기세트">
+				<input type="hidden" name="price" value="14680">
+				<input type="button" id="btnOK" value="장바구니 담기">
+			</form>
+			<input type="button" value="상품 목록 보기" onclick="history.back()">
+		</td>
+	</tr>
+</table>
+</body>
+</html>
