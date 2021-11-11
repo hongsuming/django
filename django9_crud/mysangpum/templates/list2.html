@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function func(code){
+		let result = confirm(code+"번 상품을 삭제하시겠습니까?");
+		
+		if(result){
+			document.getElementById(code).submit();
+		}
+	}
+</script>
+</head>
+<body>
+<h1>** 상품 목록 **</h1>
+<table border="1" style="width: 500px; text-align: center;">
+	<tr>
+		<th>상품코드</th>
+		<th>상품이름</th>
+		<th>상품개수</th>
+		<th>상품가격</th>
+		<th>기타</th>
+	</tr>
+	{% if list %}
+		{% for s in list %}
+			<tr>
+				<td>{{s.code}}</td>
+				<td>{{s.sang}}</td>
+				<td>{{s.su}}</td>
+				<td>{{s.dan}}</td>
+				<td>
+					<a href="/sangpum/update?code={{s.code}}">수정</a> 
+					/ 
+					<form action="/sangpum/delete" id="{{s.code}}" method="get" style="display: inline;">
+						<input type="hidden" name="code" value="{{s.code}}">
+						<a href="javascript:void(0); onclick=func({{s.code}})">삭제</a>
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+		<tr>
+			<td colspan="5">데이터가 존재하지 않습니다.</td>
+		</tr>
+	{% endif %}
+</table>
+<a href="/sangpum/insert">상품추가하기</a>
+</body>
+</html>

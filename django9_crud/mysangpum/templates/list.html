@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function func(code){
+		let result = confirm(code+"번 상품을 삭제하시겠습니까?");
+		
+		if(result){
+			document.getElementById(code).submit();
+		}
+	}
+</script>
+</head>
+<body>
+<h1>** 상품 목록 **</h1>
+<div style="width: 500px; text-align: right;">
+	<a href="/sangpum/insert">상품추가하기</a>
+</div>
+<table border="1" style="width: 500px; text-align: center;">
+	<tr>
+		<th>상품코드</th>
+		<th>상품이름</th>
+		<th>상품개수</th>
+		<th>상품가격</th>
+		<th>기타</th>
+	</tr>
+	{% if sangpums %}
+		{% for s in sangpums %}
+			<tr>
+				<td>{{s.code}}</td>
+				<td>{{s.sang}}</td>
+				<td>{{s.su}}</td>
+				<td>{{s.dan}}</td>
+				<td>
+					<a href="/sangpum/update?code={{s.code}}">수정</a> 
+					/ 
+					<form action="/sangpum/delete" id="{{s.code}}" method="get" style="display: inline;">
+						<input type="hidden" name="code" value="{{s.code}}">
+						<a href="javascript:void(0); onclick=func({{s.code}})">삭제</a>
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
+		<!-- 페이징 처리를 위해 페이지 번호 출력 -->
+		<tr>
+			<td colspan="5">
+				{% if sangpums.paginator.num_pages > 1 %}
+					<div>
+						{% if sangpums.has_previous %} <!-- 이전 페이지가 있으면 true / 없으면 false -->
+							<a href="/sangpum/list?page={{sangpums.previous_page_number}}">&laquo;이전</a> 
+						{% endif %}
+						&nbsp;&nbsp;
+						{% if sangpums.has_next %} <!-- 다음 페이지가 있으면 true / 없으면 false -->
+							<a href="/sangpum/list?page={{sangpums.next_page_number}}">다음&raquo;</a> 
+						{% endif %}
+						(페이지 : {{sangpums.number}} / {{sangpums.paginator.num_pages}})
+						
+		<hr>
+		<!-- 자주 쓰는 방법 -->
+						{% for p in allpage %}
+							{% if p > 0 %}
+								{% if p == sangpums.number %} <!-- 현재 페이지 : sangpums.number -->
+									[{{p}}] <!-- 현재 페이지일 때는 대괄호 안에 페이지 번호만 보이기 -->
+								{% elif p != sangpums.number %} <!-- 현재 페이지가 아닌 경우 -->
+									<a href="/sangpum/list?page={{p}}">[{{p}}]</a> <!-- 현재 페이지가 아닌 경우 링크 걸어주기 -->
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endif %}
+			</td>
+		</tr>
+	{% else %}
+		<tr>
+			<td colspan="5">데이터가 존재하지 않습니다.</td>
+		</tr>
+	{% endif %}
+</table>
+</body>
+</html>

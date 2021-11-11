@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("form").submit(function(event){
+ 			if($("#c").val() == ""){
+				alert("상품 코드를 입력하세요.");
+				event.preventDefault();
+			}
+ 			else if($("#s").val() == ""){
+				alert("상품 이름을 입력하세요.");
+				event.preventDefault();
+			}
+ 			else if($("#su").val() == ""){
+				alert("상품 개수를 입력하세요.");
+				event.preventDefault();
+			}
+ 			else if($("#d").val() == ""){
+				alert("상품 가격을 입력하세요.");
+				event.preventDefault();
+			}
+		});
+	});
+</script>
+<style>
+	input {
+		width: 98%;
+	}
+</style>
+</head>
+<body>
+<h1>** 상품 추가 **</h1>
+<form action="/sangpum/insertok" method="post">{% csrf_token %}
+<table border="1" style="width: 500px; text-align: center;">
+	<tr>
+		<td>상품코드</td>
+		<td><input type="text" name="code" id="c" placeholder="{{msg}}"></td>
+	</tr>
+	<tr>
+		<td>상품이름</td>
+		<td><input type="text" name="sang" id="s"></td>
+	</tr>
+	<tr>
+		<td>상품개수</td>
+		<td><input type="text" name="su" id="su"></td>
+	</tr>
+	<tr>
+		<td>상품가격</td>
+		<td><input type="text" name="dan" id="d"></td>
+	</tr>
+	<tr>
+		<td colspan="4"><input type="submit" value="추가하기" style="width: 100%"></td>
+	</tr>
+</table>
+<a href="/sangpum/list">상품 목록 보기</a>
+</form>
+</body>
+</html>
