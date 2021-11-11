@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+ 	$(function(){
+		$("form").submit(function(event){
+			if($("#t").val() == ""){
+				alert("제목을 입력하세요.");
+				event.preventDefault();
+			};
+			if($("#c").val() == ""){
+				alert("내용을 입력하세요.");
+				event.preventDefault();
+			};
+		});
+	}); 
+</script>
+</head>
+<body>
+<h1>** 박명록 작성 **</h1>
+<form action="/guest/submit/" method="post">{% csrf_token %}
+	제목 : <input id="t" type="text" name="title" size="48"><br>
+	내용 : <textarea id="c" rows="5" cols="50" name="content"></textarea><br>
+	<input type="submit" value="등록하기">
+</form>
+<a href="/guest">목록보기</a>
+</body>
+</html>

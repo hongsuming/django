@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>박명록</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".del").click(function(){
+			var id = $(this).attr("idn");
+			location.href = "/guest/delete?id="+id;
+		});
+	});
+</script>
+</head>
+<body>
+<h1>** 박명록 목록 **</h1>
+<table border="1">
+	<tr>
+		<th>아이디</th>
+		<th>제목</th>
+		<th>내용</th>
+		<th>등록일</th>
+		<th>삭제버튼</th>
+	</tr>
+{% if list %}
+	{% for i in list %}
+	<tr>
+		<td>{{i.id}}</td>
+		<td>{{i.title}}</td>
+		<td>{{i.content}}</td>
+		<td>{{i.regdate}}</td>
+		<td><button class="del" idn={{i.id}}>삭제</button></td>
+	</tr>
+	{% endfor %}
+{% else %}
+	<tr>
+		<td colspan="4">박명록 데이터가 없습니다.</td>
+	</tr>
+{% endif %}
+</table>
+<a href="/guest/insert">박명록 작성하기</a>
+</body>
+</html>
