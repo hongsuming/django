@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>** 제조사 목록 **</h1>
+<table border="1">
+	<tr>
+		<th>id</th>
+		<th>제조사 이름</th>
+		<th>제조사 전화</th>
+		<th>제조사 주소</th>
+	</tr>
+	{% if m %}
+		{% for i in m %}
+			<tr>
+				<td>{{i.id}}</td>
+				<td><a href="/list3?id={{i.id}}">{{i.m_name}}</a></td>
+				<td>{{i.m_tel}}</td>
+				<td>{{i.m_addr}}</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+		<th>
+			<td colspan="4">데이터가 존재하지 않습니다.</td>
+		</th>
+	{% endif %}
+</table>
+<a href="/">메인으로</a>
+</body>
+</html>

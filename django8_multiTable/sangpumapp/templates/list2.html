@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>** 상품 목록 **</h1>
+<table border="1" style="text-align: center;">
+	<tr>
+		<th>id</th>
+		<th>상품 이름</th>
+		<th>상품 가격</th>
+		<th>제조사 이름</th>
+	</tr>
+	{% if p %}
+		{% for i in p %}
+			<tr>
+				<td>{{i.id}}</td>
+				<td>{{i.p_name}}</td>
+				<td>{{i.p_price}}</td>
+				<td>{{i.maker_name}}</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+		<th>
+			<td colspan="4">데이터가 존재하지 않습니다.</td>
+		</th>
+	{% endif %}
+	<tr>
+		<td>총 개수</td>
+		<td colspan="3">{{pc}}</td>
+	</tr>
+</table>
+<a href="javascript:history.back()">뒤로가기</a>
+</body>
+</html>
