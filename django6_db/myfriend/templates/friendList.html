@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+** 친구 목록 **
+<table border="1">
+	<tr>
+		<th>id</th>
+		<th>이름</th>
+		<th>나이</th>
+		<th>주소</th>
+	</tr>
+	{% if list %}
+		{% for f in list %}
+			<tr>
+				<td>{{f.id}}</td>
+				<td>{{f.name}}</td>
+				<td>{{f.age}}</td>
+				<td>{{f.address}}</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+		<tr>
+			<td colspan="4">불러올 데이터가 없습니다.</td>
+		</tr>
+	{% endif %}
+</table>
+<a href="/">메인으로</a>
+</body>
+</html>
